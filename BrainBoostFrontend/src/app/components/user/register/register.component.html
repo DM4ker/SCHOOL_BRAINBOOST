@@ -8,7 +8,7 @@
   <input
     type="text"
     placeholder="Username"
-    [formField]="registerForm.username"
+    (input)="nextUsername($event)"
   />
   </div>
 
@@ -19,7 +19,7 @@
   <input
     type="password"
     placeholder="Password"
-    [formField]="registerForm.password"
+    (input)="nextPassword($event)"
   />
   </div>
 
@@ -29,7 +29,7 @@
   <input
     type="text"
     placeholder="First Name"
-    [formField]="registerForm.firstName"
+    (input)="nextFirstName($event)"
   />
   </div>
 
@@ -39,7 +39,7 @@
   <input
     type="text"
     placeholder="Last Name"
-    [formField]="registerForm.lastName"
+    (input)="nextLastName($event)"
   />
   </div>
 

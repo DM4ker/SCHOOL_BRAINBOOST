@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {RestService} from '../rest.service';
-import {LoginBean, RegisterBean, UserBean} from '../../../bean/user';
+import {LoginBean, LoginResponse, RegisterBean, UpdateUserBean, UserBean} from '../../../bean/user';
 import {Store} from '@ngxs/store';
 import {UserAction} from '../../../store/user/user.actions';
 
@@ -16,7 +16,7 @@ export class UserService {
   }
 
   public login$(loginBean: LoginBean) {
-    return this.restService.post$<UserBean>('/user/login', loginBean);
+    return this.restService.post$<LoginResponse>('/user/login', loginBean);
   }
 
   public register$(registerBean: RegisterBean) {
@@ -27,4 +27,8 @@ export class UserService {
     return this.store.dispatch(new UserAction.Logout)
   }
 
+  public patch$(id: number, patchBean: Partial<UpdateUserBean>) {
+    return this.restService.patch$<LoginResponse>('/user/' + id, patchBean);
+  }
+  
 }

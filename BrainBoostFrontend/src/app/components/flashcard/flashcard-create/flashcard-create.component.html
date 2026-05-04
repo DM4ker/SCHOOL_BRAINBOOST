@@ -4,22 +4,23 @@
 <input
 type="text"
 placeholder="Title"
-[formField]="flashCardCreateForm.title">
+(input)="nextFlashCardTitle($event)">
 </div>
 
 <div class="input-container">
   <label class="input-label">Question: </label>
 <textarea
   placeholder="Question"
-[formField]="flashCardCreateForm.question">
+  (input)="nextFlashCardQuestion($event)">
 </textarea>
 </div>
 
 <div class="input-container">
   <label class="input-label">Answer: </label>
-  <textarea
-    placeholder="Answer"
-  [formField]="flashCardCreateForm.answer"></textarea>
+<textarea
+  placeholder="Answer"
+  (input)="nextFlashCardAnswer($event)">
+</textarea>
 </div>
 
 <button class="create-flashcard-button" (click)="createFlashCard$()">

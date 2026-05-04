@@ -10,6 +10,14 @@ export interface LoginBean {
   password: string;
 }
 
+export interface LoginResponse {
+  token: string;
+  user: UserBean;
+}
+
 export interface RegisterBean extends Partial<UserBean> {
   password: string;
+}
+
+export interface UpdateUserBean extends RegisterBean {
 }

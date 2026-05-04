@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {Store} from '@ngxs/store';
 import {UserState} from '../../../store/user/user.state';
 import {AsyncPipe} from '@angular/common';
@@ -22,11 +22,13 @@ export class NavbarComponent {
   public isLoggedIn$ = inject(Store).select(UserState.isLoggedIn);
   public loggedInUser$ = inject(Store).select(UserState.getUser);
 
-  constructor(private readonly store: Store) {
+  constructor(private readonly store: Store,
+              private readonly router: Router
+  ) {
   }
 
   public async logout$() {
-    return firstValueFrom(this.store.dispatch(new UserAction.Logout))
+    return firstValueFrom(this.store.dispatch(new UserAction.Logout)).then(() => this.router.navigateByUrl(this.router.createUrlTree(['/'])))
   }
 
   public async copyLinkToClipboard() {

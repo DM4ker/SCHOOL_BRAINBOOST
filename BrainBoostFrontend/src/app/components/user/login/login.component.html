@@ -7,7 +7,7 @@
     class="input-field"
     type="text"
     placeholder="Username"
-    [formField]="loginForm.username"
+    (input)="nextUserName($event)"
   />
   </div>
 
@@ -18,7 +18,7 @@
     class="input-field"
     type="password"
     placeholder="Password"
-    [formField]="loginForm.password"
+    (input)="nextPassword($event)"
   />
   </div>
 

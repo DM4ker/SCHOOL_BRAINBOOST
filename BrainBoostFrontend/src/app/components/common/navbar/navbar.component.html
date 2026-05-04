@@ -23,9 +23,7 @@
       @if (!isLoggedIn) {
         <a routerLink="/login" class="login-link">Login</a>
       } @else {
-        <!-- Maybe add profile link later
-        <a routerLink="/profile" class="profile-link">Profile</a>
-        -->
+        <a routerLink="/profile" class="profile-link">Edit</a>
         <span class="welcome-message">Welcome, {{ loggedInUser?.firstName }}!</span>
         <button class="logout-button" (click)="logout$()">Logout</button>
       }

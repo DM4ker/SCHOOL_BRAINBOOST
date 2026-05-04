@@ -5,8 +5,6 @@ import dev.omel.brainboostbackend.bean.UserBean;
 import dev.omel.brainboostbackend.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -30,13 +28,6 @@ public class UserController {
     public ResponseEntity<UserBean> registerUser(@RequestBody UserBean userBean) throws Exception {
         UserBean responseUserBean = userService.register(userBean.username(), userBean.password(), userBean.firstName(), userBean.lastName());
         UserBean sanitizedUserBean = new UserBean(responseUserBean.id(), responseUserBean.username(), null, responseUserBean.firstName(), responseUserBean.lastName());
-        return ResponseEntity.ok(sanitizedUserBean);
-    }
-
-    @PatchMapping("/user/{id}")
-    public ResponseEntity<UserBean> updateUser(@PathVariable Long id, @RequestBody UserBean userBean) throws Exception {
-        UserBean updatedUserBean = userService.update(id, userBean);
-        UserBean sanitizedUserBean = new UserBean(updatedUserBean.id(), updatedUserBean.username(), null, updatedUserBean.firstName(), updatedUserBean.lastName());
         return ResponseEntity.ok(sanitizedUserBean);
     }
 

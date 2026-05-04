@@ -3,7 +3,6 @@ package dev.omel.brainboostbackend.service.impl;
 import dev.omel.brainboostbackend.bean.UserBean;
 import dev.omel.brainboostbackend.service.UserService;
 import dev.omel.brainboostbackend.worker.UserWorker;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,20 +16,12 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    @Transactional
     public UserBean login(String username, String password) throws Exception {
         return userWorker.getUserByUsernameAndPassword(username, password);
     }
 
     @Override
-    @Transactional
     public UserBean register(String username, String password, String firstName, String lastName) throws Exception {
         return userWorker.createUser(username, password, firstName, lastName);
-    }
-
-    @Override
-    @Transactional
-    public UserBean update(Long id, UserBean userBean) throws Exception {
-        return userWorker.updateUser(id, userBean);
     }
 }

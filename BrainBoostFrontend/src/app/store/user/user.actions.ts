@@ -7,7 +7,7 @@ export namespace UserAction {
   export class SetUser {
     static readonly type = `${PREFIX} Set User`;
 
-    constructor(readonly user: UserBean | null) {
+    constructor(readonly user: UserBean | null, readonly token?: string | null) {
     }
   }
 

@@ -5,10 +5,12 @@ import {UserBean} from '../../bean/user';
 
 export interface UserModel {
   user: UserBean | null;
+  token: string | null;
 }
 
 const DEFAULTS: UserModel = {
-  user: null
+  user: null,
+  token: null
 }
 
 const USER_TOKEN = new StateToken<UserModel>('user');
@@ -33,10 +35,16 @@ export class UserState {
     return state.user !== null;
   }
 
+  @Selector()
+  static getToken(state: UserModel) {
+    return state.token;
+  }
+
   @Action(UserAction.SetUser)
   setUser(ctx: StateContext<UserModel>, action: UserAction.SetUser) {
     ctx.setState({
       user: action.user,
+      token: action.token ?? null,
     });
   }
 
@@ -44,6 +52,7 @@ export class UserState {
   logout(ctx: StateContext<UserModel>) {
     ctx.setState({
       user: null,
+      token: null,
     });
   }
 

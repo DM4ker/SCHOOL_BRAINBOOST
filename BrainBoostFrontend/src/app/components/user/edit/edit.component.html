@@ -1,0 +1,50 @@
+<div class="input-container">
+
+  <h2 class="patch-header">Edit</h2>
+
+  <!-- Username -->
+  <div class="input-container">
+    <label>Username: </label>
+  <input
+    type="text"
+    placeholder="Username"
+    (input)="nextUsername($event)"
+  />
+  </div>
+
+
+  <!-- Password -->
+  <div class="input-container">
+    <label>Password: </label>
+  <input
+    type="password"
+    placeholder="Password"
+    (input)="nextPassword($event)"
+  />
+  </div>
+
+  <!-- First Name -->
+  <div class="input-container">
+    <label>First Name: </label>
+  <input
+    type="text"
+    placeholder="First Name"
+    (input)="nextFirstName($event)"
+  />
+  </div>
+
+  <!-- Last Name -->
+  <div class="input-container">
+    <label>Last Name: </label>
+  <input
+    type="text"
+    placeholder="Last Name"
+    (input)="nextLastName($event)"
+  />
+  </div>
+
+  <!-- Patch Button -->
+  <button class="patch-button" (click)="patch$()">
+    Edit
+  </button>
+</div>

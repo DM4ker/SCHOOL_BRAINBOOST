@@ -8,6 +8,8 @@ import {FlashcardOverviewComponent} from './components/flashcard/flashcard-overv
 import {FlashcardLearnComponent} from './components/flashcard/flashcard-learn/flashcard-learn.component';
 import {HomeComponent} from './components/common/home/home.component';
 import {redirectToHomeGuardIfNotLoggedIn} from './guard/redirect-to-home-guard-if-not-logged.in';
+import { EditComponent } from './components/user/edit/edit.component';
+
 
 export const routes: Routes = [
 
@@ -27,6 +29,13 @@ export const routes: Routes = [
     component: RegisterComponent,
     canActivate: [
       redirectToHomeGuardIfLoggedIn
+    ]
+  },
+  {
+    path: 'profile',
+    component: EditComponent,
+    canActivate: [
+      redirectToHomeGuardIfNotLoggedIn
     ]
   },
 

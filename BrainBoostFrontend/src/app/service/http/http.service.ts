@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
-import {map, Observable, shareReplay} from "rxjs";
+import {catchError, map, Observable, shareReplay, throwError} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -32,12 +32,14 @@ export class HttpService {
   public execute$<T>(execute: (options: any) => Observable<HttpResponse<T>>, parameters?: any): Observable<T | null> {
     const options: any = {
       headers: new HttpHeaders(),
-      withCredentials: true,
       observe: 'response',
       params: parameters ?? {},
     };
     return execute(options).pipe(
       map((response: HttpResponse<T>) => response.body),
+      catchError((error) => {
+        return throwError(() => error);
+      }),
       shareReplay(1),
     );
   }
